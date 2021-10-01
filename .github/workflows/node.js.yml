@@ -1,4 +1,4 @@
-name: CI/CD
+name: BUILD
 
 on:
   push:
@@ -30,21 +30,10 @@ jobs:
     - name: Build
       run: npm run build
       
-  release:
-    runs-on: ubuntu-latest
-    # We specify that deploys needs to
-    # finish before we create a release
-    needs: build
-    steps:
-      # Upload as an artifact of the current workflow
-      - name: Upload build artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: build-artifact
-          path: /
-      # Make official GitHub release which will trigger
-      # sending the mail with link for access
-      - name: Download a single artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: build-artifact
+    - name: Archive production artifacts
+      uses: actions/upload-artifact@v2
+      with:
+          name: dist-without-markdown
+          path: |
+            dist
+            !dist/**/*.md
