@@ -1,0 +1,37 @@
+.background-purple {
+  background-color: #7269ef;
+}
+.loader {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.select-option-group {
+  position: relative;
+  flex: 1 1 auto;
+  width: 1%;
+  border-color: #e6ebf5;
+  min-width: 0;
+  background: #f5f7fc;
+}
+.card-top {
+  display: flex;
+  justify-content: space-between;
+}
+.card-top span {
+  align-self: center;
+}
+.card-top img {
+  width: 80px;
+}
+.dashboard {
+  margin-top: 10rem;
+}
+.create-team {
+  align-items: center;
+  min-height: 135px;
+  justify-content: center;
+}
+.creat-team-body {
+  background-color: #000;
+  opacity: 0.5;
+}

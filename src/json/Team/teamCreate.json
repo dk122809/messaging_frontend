@@ -1,0 +1,10 @@
+[
+    {
+        "name": "name",
+        "label": "Team Name",
+        "type": "text",
+        "placeholder": "Enter Team Name",
+        "icon": "ri-user-2-line",
+        "required": true
+    }
+]

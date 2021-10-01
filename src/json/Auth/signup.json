@@ -1,0 +1,26 @@
+[
+    {
+        "name": "name",
+        "label": "Name",
+        "type": "text",
+        "placeholder": "Enter Name",
+        "icon": "ri-user-2-line",
+        "required": true
+    },
+    {
+        "name": "username",
+        "label": "Username",
+        "type": "text",
+        "placeholder": "Enter Username",
+        "icon": "ri-user-2-line",
+        "required": true
+    },
+    {
+        "name": "password",
+        "label": "Password",
+        "type": "password",
+        "placeholder": "Enter Password",
+        "icon": "ri-lock-2-line",
+        "required": true
+    }
+]
