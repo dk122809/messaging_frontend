@@ -37,14 +37,14 @@ jobs:
     needs: build
     steps:
       # Upload as an artifact of the current workflow
-      - name: Upload build zip artifact
-        uses: actions/upload-artifact@v1
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v2
         with:
-          name: react-github-actions-release-build.zip
-          path: react-github-actions-release-build.zip
+          name: build-artifact
+          path: /
       # Make official GitHub release which will trigger
       # sending the mail with link for access
       - name: Download a single artifact
-        uses: actions/download-artifact@v1
+        uses: actions/download-artifact@v2
         with:
-          name: react-github-actions-release-build.zip
+          name: build-artifact
