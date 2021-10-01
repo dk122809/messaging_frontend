@@ -36,11 +36,6 @@ jobs:
     # finish before we create a release
     needs: build
     steps:
-      - name: Zip build
-        uses: thedoctor0/zip-release@master
-        with:
-          filename: react-github-actions-release-build.zip
-          path: react-github-actions-build
       # Upload as an artifact of the current workflow
       - name: Upload build zip artifact
         uses: actions/upload-artifact@v1
@@ -49,7 +44,7 @@ jobs:
           path: react-github-actions-release-build.zip
       # Make official GitHub release which will trigger
       # sending the mail with link for access
-      - name: Release
-        uses: ncipollo/release-action@v1
+      - name: Download a single artifact
+        uses: actions/download-artifact@v1
         with:
-          artifacts: react-github-actions-release-build.zip
+          name: react-github-actions-release-build.zip
