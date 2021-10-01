@@ -16,18 +16,13 @@ const JoinTeam = () => {
   const [teams, setTeams] = useState([]);
   const history = useHistory();
 
-  useEffect(()=>{
-    const fetchTeams = async()=>{
-        const teams = await Api.apiHandle("team/", "", "GET");
-        if(teams.status === 200){
-            toast.success(teams.data.message);
-            setTeams([{name: "Select team", _id: ""},...teams.data.data])
-        }else{
-            toast.error(teams.data.message);
-        }
-    }
+  useEffect(() => {
+    const fetchTeams = async () => {
+      const teams = await Api.apiHandle("team/", "", "GET");
+      if (teams) setTeams([{ name: "Select team", _id: "" }, ...teams.data]);
+    };
     fetchTeams();
-  },[])
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -41,13 +36,12 @@ const JoinTeam = () => {
     e.preventDefault();
     setLoading(true);
     const teamCreate = await Api.apiHandle("team/", teamData, "PUT");
-    if (teamCreate.status === 201) {
+    if (teamCreate) {
       setTeamData({ ...defaultTeamData });
-      toast.success(teamCreate.data.message);
+      toast.success(teamCreate.message);
       setLoading(false);
       history.push("/");
     } else {
-      toast.error(teamCreate.data.message);
       setLoading(false);
     }
   };

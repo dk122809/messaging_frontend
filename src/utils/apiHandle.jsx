@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 
 export const apiHandle = (apiLink, apiData, method) => {
   const baseUrl = "http://localhost:8000/v1/";
@@ -12,9 +13,10 @@ export const apiHandle = (apiLink, apiData, method) => {
     data: apiData,
   })
     .then((response) => {
-      return response;
+      return response.data;
     })
     .catch((error) => {
-      return error.response;
+      toast.error(error.response.data.message);
+      return false;
     });
 };

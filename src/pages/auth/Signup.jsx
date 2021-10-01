@@ -31,14 +31,13 @@ const Signup = () => {
     e.preventDefault();
     setLoading(true);
     const userCreate = await Api.apiHandle("auth/register", userData, "POST");
-    if (userCreate.status === 200) {
+    if (userCreate) {
       setUserData({ ...defaultUserData });
-      localStorage.setItem("token", userCreate.data.data.token);
-      toast.success(userCreate.data.message);
+      localStorage.setItem("token", userCreate.data.token);
+      toast.success(userCreate.message);
       setLoading(false);
       history.push("/teamCreate");
     } else {
-      toast.error(userCreate.data.message);
       setLoading(false);
     }
   };

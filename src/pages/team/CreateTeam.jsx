@@ -27,13 +27,12 @@ const CreateTeam = () => {
     e.preventDefault();
     setLoading(true);
     const teamCreate = await Api.apiHandle("team/", teamData, "POST");
-    if (teamCreate.status === 201) {
+    if (teamCreate) {
       setTeamData({ ...defaultTeamData });
-      toast.success(teamCreate.data.message);
+      toast.success(teamCreate.message);
       setLoading(false);
       history.push("/");
     } else {
-      toast.error(teamCreate.data.message);
       setLoading(false);
     }
   };

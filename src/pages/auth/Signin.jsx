@@ -28,14 +28,13 @@ const Signin = () => {
     e.preventDefault();
     setLoading(true);
     const userLogin = await Api.apiHandle("auth/login", userData, "POST");
-    if (userLogin.status === 200) {
+    if (userLogin) {
       setUserData({ ...defaultUserData });
-      localStorage.setItem("token", userLogin.data.data.token);
-      toast.success(userLogin.data.message);
+      localStorage.setItem("token", userLogin.data.token);
+      toast.success(userLogin.message);
       setLoading(false);
       history.push("/");
     } else {
-      toast.error(userLogin.data.message);
       setLoading(false);
     }
   };
